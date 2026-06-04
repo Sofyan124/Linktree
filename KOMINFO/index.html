@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linktree</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="card" aria-label="Linktree">
+      <header class="profile">
+        <!-- Ganti src berikut untuk menampilkan foto profil sendiri -->
+        <img class="avatar" src="https://via.placeholder.com/176" alt="Foto profil" />
+
+        <h1 class="name">⚡BANGG HARIRI⚡</h1>
+        <p class="bio">Bio singkat di sini.</p>
+      </header>
+
+      <section class="links" aria-label="Daftar link">
+        <a class="link" href="#" target="_blank" rel="noopener">Instagram</a>
+        <a class="link" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="link" href="#" target="_blank" rel="noopener">TikTok</a>
+        <a class="link" href="#" target="_blank" rel="noopener">Portfolio</a>
+        <a class="link" href="#" target="_blank" rel="noopener">YouTube</a>
+      </section>
+
+      <footer class="footer">© <span id="year"></span> · Linktree</footer>
+    </main>
+
+    <script>
+      (function () {
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+      })();
+    </script>
+  </body>
+</html>
+
+

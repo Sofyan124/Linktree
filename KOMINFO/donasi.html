@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donasi</title>
+    <link rel="stylesheet" href="./donasi.css" />
+  </head>
+  <body>
+    <main class="donation-card" aria-label="Halaman Donasi">
+      <div class="brand">
+        <div class="brand-badge" aria-hidden="true">dana</div>
+        <h1 class="title">Dukung Saya</h1>
+        <p class="subtitle">Transfer donasi melalui nomor Dana di bawah ini.</p>
+      </div>
+
+      <section class="amount" aria-label="Nomor Dana">
+        <div class="label">Nomor Dana</div>
+
+        <!-- Ganti isi teks ini sesuai nomor Dana kamu -->
+        <div class="value" id="danaNumber">0823-1234-5678</div>
+
+        <div class="actions">
+          <button type="button" class="btn primary" id="copyBtn">Salin Nomor</button>
+          <a class="btn" id="waBtn" href="#" target="_blank" rel="noopener">
+            Lanjut ke WhatsApp
+          </a>
+        </div>
+
+        <div class="hint">Isi nomor Dana di file <b>donasi.html</b> pada bagian elemen <code>#danaNumber</code>.</div>
+      </section>
+
+      <section class="tips" aria-label="Catatan">
+        <h2 class="tips-title">Catatan</h2>
+        <ul class="tips-list">
+          <li>Setelah transfer, kirim bukti/konfirmasi ke kontak yang kamu tentukan di tombol WhatsApp.</li>
+          <li>Nomor bisa berupa angka saja atau format seperti contoh.</li>
+        </ul>
+      </section>
+
+      <footer class="footer">© <span id="year"></span> · Donasi</footer>
+    </main>
+
+    <script>
+      (function () {
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        const danaEl = document.getElementById('danaNumber');
+        const copyBtn = document.getElementById('copyBtn');
+
+        if (copyBtn && danaEl) {
+          copyBtn.addEventListener('click', async function () {
+            const text = danaEl.textContent.trim();
+            try {
+              await navigator.clipboard.writeText(text);
+              copyBtn.textContent = 'Tersalin ✓';
+              setTimeout(function () {
+                copyBtn.textContent = 'Salin Nomor';
+              }, 1200);
+            } catch (e) {
+              alert('Gagal menyalin. Silakan salin manual: ' + text);
+            }
+          });
+        }
+
+        const waBtn = document.getElementById('waBtn');
+        // Opsional: isi href WA dengan nomor dan pesan sesuai kebutuhan.
+        // Contoh:
+        // waBtn.href = 'https://wa.me/62812xxxxxxx?text=' + encodeURIComponent('Halo, saya ingin berdonasi...');
+      })();
+    </script>
+  </body>
+</html>
+
